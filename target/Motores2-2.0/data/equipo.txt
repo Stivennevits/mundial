@@ -1,0 +1,3 @@
+1,peru,PEKERMAN,mrx.jpg
+2,colombia,peAA,mrx.jpg
+3,china,sss,argentina-ricardo-gareca-35-137546-p.jpg

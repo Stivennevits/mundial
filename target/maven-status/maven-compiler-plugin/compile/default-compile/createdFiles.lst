@@ -1,0 +1,11 @@
+umariana\mundial\resources\JavaEE8Resource.class
+servlets\SV_EditarEquipo.class
+servlets\SV_AgregarEquipo.class
+umariana\mundial\JAXRSConfiguration.class
+servlets\SV_EliminarEquipo.class
+umariana\mundial\GestionarEquipo.class
+umariana\mundial\GestionarJugador.class
+umariana\mundial\Equipo.class
+umariana\mundial\IdJugadorDuplicadoException.class
+umariana\mundial\Jugador.class
+umariana\mundial\NombreDuplicadoException.class
