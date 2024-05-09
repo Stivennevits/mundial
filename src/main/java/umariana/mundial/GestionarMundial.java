@@ -92,173 +92,7 @@ public class GestionarMundial {
         guardarMundial();
     }
     
-    // Método para inicializar la lista de equipos
-    private static void inicializarEquipos() {
-        Mundial mundial = new Mundial();
-        Equipo equipoActual = null;
-        ArrayList<Jugador> jugadores = null;
-        String rutaArchivo = servletContext.getRealPath("/WEB-INF/data/mundial.txt");
-        File archivo = new File(rutaArchivo);
-        if (archivo.exists()) {
-            try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = lector.readLine()) != null) {
-                if (linea.startsWith("*_Equipo:")) {
-                    // Si hay un equipo anterior, agregamos los jugadores a ese equipo
-                    if (equipoActual != null && jugadores != null) {
-                        equipoActual.setJugadores(jugadores);
-                        try {
-                            mundial.agregarEquipo(equipoActual);
-                        } catch (NombreDuplicadoException ex) {
-                            Logger.getLogger(GestionarMundial.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }
-
-                    // Creamos un nuevo equipo
-                    equipoActual = new Equipo();
-                    equipoActual.setNombre(linea.substring(10).trim());
-                    jugadores = new ArrayList<>();
-                }else if (linea.startsWith("Id:")) {
-                        if (equipoActual != null) {
-                        equipoActual.setId(Integer.parseInt(linea.substring(4).trim()));
-                    }
-                } else if (linea.startsWith("Director Tecnico:")) {
-                    if (equipoActual != null) {
-                        equipoActual.setDirectorTecnico(linea.substring(18).trim());
-                    }
-                } else if (linea.startsWith("Bandera:")) {
-                    if (equipoActual != null) {
-                        equipoActual.setBandera(linea.substring(9).trim());
-                    }
-                    
-                } else if (linea.startsWith("Jugadores:")) {
-                    // Saltamos la línea de encabezado
-                    lector.readLine();
-                    // Leemos los jugadores del equipo
-                    String jugadorLine;
-                    while (!(jugadorLine = lector.readLine()).equals("")) {
-                        Jugador jugador = new Jugador();
-                        jugador.setId(Integer.parseInt(jugadorLine.substring(jugadorLine.indexOf("Id:") + 4).trim()));
-                        jugador.setNombre(lector.readLine().substring(11).trim());
-                        jugador.setEdad(Integer.parseInt(lector.readLine().substring(10).trim()));
-                        jugador.setAltura(Double.parseDouble(lector.readLine().substring(11).trim()));
-                        jugador.setPeso(Double.parseDouble(lector.readLine().substring(9).trim()));
-                        jugador.setSalario(Double.parseDouble(lector.readLine().substring(12).trim()));
-                        jugador.setRutaImagen(lector.readLine().substring(16).trim());
-                        jugador.setPosicion(lector.readLine().substring(14).trim());
-                        jugadores.add(jugador);
-                        // Leer la línea en blanco
-                        lector.readLine();
-                        lector.mark(4096); // marca el inicio de la línea
-                        String nextLine = lector.readLine();
-                        if (nextLine != null) {
-                            if (!(nextLine.substring(0, 9).equals("*_Equipo:"))) {
-                                lector.reset(); // retrocede al inicio de la línea
-                            } else {
-                                lector.reset();
-                                break;
-                            }
-                        } else {
-                            break; // Salir del bucle si nextLine es null (fin del archivo)
-                        }
-                    }
-                }
-            }
-
-            // Agregamos el último equipo
-            if (equipoActual != null && jugadores != null) {
-                equipoActual.setJugadores(jugadores);
-                try {
-                    mundial.agregarEquipo(equipoActual);
-                } catch (NombreDuplicadoException ex) {
-                    Logger.getLogger(GestionarMundial.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-
-        } catch (IOException e) {
-        }
         
-
-        }
-    }
-    public static List<Equipo> obtenerTodosLosEquipos() {
-        return equipos;
-    }
-
-    private static boolean verificarExistencia(ArrayList<Equipo> equipos, int id) {
-        for (Equipo equipo : equipos) {
-            for (Jugador jugador : equipo.getJugadores()) {
-                if (jugador.getId() == id) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }    
-    
-    public static void guardarMundial() {
-        String filePath = servletContext.getRealPath("/WEB-INF/data/mundial.txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (Equipo equipo : Mundial.getEquipos()) {
-                // Verifica si el equipo ya existe en el archivo
-                boolean equipoExistente = equipoExistenteEnArchivo(filePath, equipo.getNombre());
-    
-                // Escribe la información del equipo
-                writer.write("*_Equipo: " + equipo.getNombre());
-                writer.newLine();
-                writer.write("Id: " + equipo.getId()); // No se cambia el ID existente
-                writer.newLine();
-                writer.write("Director Tecnico: " + equipo.getDirectorTecnico());
-                writer.newLine();
-                writer.write("Bandera: " + equipo.getBandera());
-                writer.newLine();
-                writer.write("Jugadores:");
-                writer.newLine();
-    
-                List<Jugador> jugadores = equipo.getJugadores();
-                for (Jugador jugador : jugadores) {
-                    int totalJugadores = jugador.getId();
-
-                    writer.write("\n    Id: " + totalJugadores);
-                    writer.newLine();
-                    writer.write("    Nombre: " + jugador.getNombre());
-                    writer.newLine();
-                    writer.write("    Edad: " + jugador.getEdad());
-                    writer.newLine();
-                    writer.write("    Altura: " + jugador.getAltura());
-                    writer.newLine();
-                    writer.write("    Peso: " + jugador.getPeso());
-                    writer.newLine();
-                    int salarioEntero = (int) jugador.getSalario(); // Convertir a entero
-                    writer.write("    Salario: " + salarioEntero);
-                    writer.newLine();
-                    writer.write("    Ruta Imagen: " + jugador.getRutaImagen());
-                    writer.newLine();
-                    writer.write("    Posicion: " + jugador.getPosicion());
-                    writer.newLine();
-                }
-                writer.newLine();
-            }
-    
-        } catch (IOException e) {
-            System.err.println("Error al guardar el archivo: " + e.getMessage());
-        }
-    }
-    
-
-    private static boolean equipoExistenteEnArchivo(String filePath, String nombreEquipo) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                if (linea.startsWith("*_Equipo: ") && linea.substring(10).trim().equals(nombreEquipo)) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
-        }
-        return false;
-    }
 
     public void editarEquipo(int idEquipo, String nombreEquipo, String director, String nuevoLogoCargado) {
         Equipo equipo = Mundial.getEquipoPorId(idEquipo);
@@ -281,8 +115,119 @@ public class GestionarMundial {
         jugador.setRutaImagen(nuevoLogoCargado);
         
         guardarMundial();
+    }    
+    
+    // Método para inicializar la lista de equipos
+    private static void inicializarEquipos() {
+        Mundial mundial = new Mundial(); // Creamos un nuevo Mundial
+        ArrayList<Jugador> jugadores = null; // Inicializamos la lista de jugadores como nula
+        String rutaArchivo = servletContext.getRealPath("/WEB-INF/data/mundial.txt"); // Obtenemos la ruta del archivo de datos
+        File archivo = new File(rutaArchivo); // Creamos un objeto File para el archivo
+
+        if (archivo.exists()) { // Verificamos si el archivo existe
+            try (BufferedReader lector = new BufferedReader(new FileReader(archivo))) { // Creamos un BufferedReader para leer el archivo
+                String linea; // Variable para almacenar cada línea leída del archivo
+                Equipo equipoActual = null; // Inicializamos el equipo actual como nulo
+                while ((linea = lector.readLine()) != null) { // Mientras haya líneas por leer en el archivo
+                    String[] campos = linea.split(";"); // Dividimos la línea en campos separados por ";"
+                    if (campos.length == 4) { // Si hay 4 campos, es un equipo
+                        // Si hay un equipo anterior, agregamos los jugadores a ese equipo
+                        if (equipoActual != null && jugadores != null) {
+                            equipoActual.setJugadores(jugadores); // Asignamos la lista de jugadores al equipo actual
+                            try {
+                                mundial.agregarEquipo(equipoActual); // Agregamos el equipo al Mundial
+                            } catch (NombreDuplicadoException ex) {
+                                Logger.getLogger(GestionarMundial.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        // Creamos un nuevo equipo
+                        equipoActual = new Equipo(); // Inicializamos un nuevo equipo
+                        equipoActual.setId(Integer.parseInt(campos[0])); // Asignamos el ID del equipo
+                        equipoActual.setNombre(campos[1]); // Asignamos el nombre del equipo
+                        equipoActual.setDirectorTecnico(campos[2]); // Asignamos el director técnico del equipo
+                        equipoActual.setBandera(campos[3]); // Asignamos la ruta de la bandera del equipo
+                        jugadores = new ArrayList<>(); // Inicializamos la lista de jugadores para el nuevo equipo
+                    } else if (campos.length == 9) { // Si hay 8 campos, es un jugador
+                        Jugador jugador = new Jugador(); // Creamos un nuevo jugador
+                        jugador.setId(Integer.parseInt(campos[1])); // Asignamos el ID del jugador
+                        jugador.setNombre(campos[2]); // Asignamos el nombre del jugador
+                        jugador.setEdad(Integer.parseInt(campos[3])); // Asignamos la edad del jugador
+                        jugador.setAltura(Double.parseDouble(campos[4])); // Asignamos la altura del jugador
+                        jugador.setPeso(Double.parseDouble(campos[5])); // Asignamos el peso del jugador
+                        jugador.setSalario(Double.parseDouble(campos[6])); // Asignamos el salario del jugador
+                        jugador.setRutaImagen(campos[7]); // Asignamos la ruta de la imagen del jugador
+                        jugador.setPosicion(campos[8]); // Asignamos la posición del jugador
+                        jugadores.add(jugador); // Agregamos el jugador a la lista de jugadores del equipo actual
+                    }
+                }
+
+                // Agregamos el último equipo
+                if (equipoActual != null && jugadores != null) {
+                    equipoActual.setJugadores(jugadores); // Asignamos la lista de jugadores al último equipo
+                    try {
+                        mundial.agregarEquipo(equipoActual); // Agregamos el último equipo al Mundial
+                    } catch (NombreDuplicadoException ex) {
+                        Logger.getLogger(GestionarMundial.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            } catch (IOException e) {
+                // Manejo de excepciones
+            }
+        }
     }
 
+    public static List<Equipo> obtenerTodosLosEquipos() {
+        return equipos;
+    }
+
+    private static boolean verificarExistencia(ArrayList<Equipo> equipos, int id) {
+        for (Equipo equipo : equipos) {
+            for (Jugador jugador : equipo.getJugadores()) {
+                if (jugador.getId() == id) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }    
     
+    private static void guardarMundial() {
+        String filePath = servletContext.getRealPath("/WEB-INF/data/mundial.txt");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (Equipo equipo : Mundial.getEquipos()) {
+                // Verifica si el equipo ya existe en el archivo
+                boolean equipoExistente = equipoExistenteEnArchivo(filePath, equipo.getNombre());
+    
+                // Si el equipo no existe en el archivo, escribe su información
+                if (!equipoExistente) {
+                    writer.write(equipo.getId() + ";" + equipo.getNombre() + ";" + equipo.getDirectorTecnico() + ";" + equipo.getBandera());
+                    writer.newLine();
+                }
+    
+                // Escribe la información de los jugadores
+                List<Jugador> jugadores = equipo.getJugadores();
+                for (Jugador jugador : jugadores) {
+                    writer.write(equipo.getId() + ";" + jugador.getId() + ";" + jugador.getNombre() + ";" + jugador.getEdad() + ";" + jugador.getAltura() + ";" + jugador.getPeso() + ";" + jugador.getSalario() + ";" + jugador.getRutaImagen() + ";" + jugador.getPosicion());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+    
+    private static boolean equipoExistenteEnArchivo(String filePath, String nombreEquipo) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                if (linea.startsWith(nombreEquipo)) {
+                    return true;
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+        }
+        return false;
+    }
 
 }

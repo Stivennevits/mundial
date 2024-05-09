@@ -1,95 +1,13 @@
-*_Equipo: Brasil
-Id: 1
-Director Tecnico: Tite
-Bandera: /imagenes/brasil/brazil.png
-Jugadores:
-
-    Id: 1
-    Nombre: Neymar Jr.
-    Edad: 29
-    Altura: 1.75
-    Peso: 68.0
-    Salario: 1200000.0
-    Ruta Imagen: /imagenes/brasil/neymar.jpg
-    Posicion: Extremo Derecho
-	
-    Id: 2
-    Nombre: Richarlison
-    Edad: 24
-    Altura: 1.75
-    Peso: 71.0
-    Salario: 900000.0
-    Ruta Imagen: /imagenes/brasil/richarlison.png
-    Posicion: Extremo Derecho
-
-*_Equipo: Argentina
-Id: 2
-Director Tecnico: Lionel Scaloni
-Bandera: /imagenes/argentina/argentina.jpg
-Jugadores:
-
-    Id: 3
-    Nombre: Lionel Messi
-    Edad: 12
-    Altura: 1.71
-    Peso: 72.0
-    Salario: 1500000.0
-    Ruta Imagen: /imagenes/argentina/lionelmessi.jpg
-    Posicion: Delantero
-
-*_Equipo: Colombia
-Id: 3
-Director Tecnico: Reinaldo Rueda
-Bandera: /imagenes/colombia/colombia.jpg
-Jugadores:
-
-    Id: 4
-    Nombre: James RodrÃ­guez
-    Edad: 30
-    Altura: 1.8
-    Peso: 75.0
-    Salario: 1300000.0
-    Ruta Imagen: /imagenes/colombia/jamesrodriguez.jpg
-    Posicion: Mediocentro Ofensivo
-
-    Id: 5
-    Nombre: Radamel Falcao
-    Edad: 35
-    Altura: 1.77
-    Peso: 74.0
-    Salario: 1100000.0
-    Ruta Imagen: /imagenes/colombia/radamelfalcao.jpg
-    Posicion: Delantero Centro
-
-*_Equipo: Alemania
-Id: 4
-Director Tecnico: Joachim LÃ¶w
-Bandera: /imagenes/alemania/alemania.jpg
-Jugadores:
-
-    Id: 6
-    Nombre: Manuel Neuer
-    Edad: 35
-    Altura: 1.93
-    Peso: 92.0
-    Salario: 1400000.0
-    Ruta Imagen: /imagenes/alemania/manuelneuer.jpg
-    Posicion: Portero
-
-    Id: 7
-    Nombre: Toni Kroos
-    Edad: 31
-    Altura: 1.83
-    Peso: 78.0
-    Salario: 1200000.0
-    Ruta Imagen: /imagenes/alemania/tonikroos.jpg
-    Posicion: Mediocentro
-
-    Id: 8
-    Nombre: Thomas MÃ¼ller
-    Edad: 32
-    Altura: 1.86
-    Peso: 75.0
-    Salario: 1100000.0
-    Ruta Imagen: /imagenes/alemania/thomasmuller.jpg
-    Posicion: Delantero
+1;Argentina;Lionel Scaloni;/imagenes/argentina/argentina.jpg
+1;1;Lionel Messi;12;1.71;72.0;1500000.0;/imagenes/argentina/lionelmessi.jpg;Delantero
+1;2;Sergio Agüero;33;1.75;70.0;1200000.0;/imagenes/argentina/sergioaguero.jpg;Delantero
+1;3;Paulo Dybala;28;1.78;75.0;1300000.0;/imagenes/argentina/paulodybala.jpg;Delantero
+2;Colombia;Reinaldo Rueda;/imagenes/colombia/colombia.jpg
+2;4;James Rodríguez;30;1.8;76.0;1800000.0;/imagenes/colombia/jamesrodriguez.jpg;Centrocampista
+2;5;Juan Cuadrado;33;1.79;72.0;1700000.0;/imagenes/colombia/juancuadrado.jpg;Extremo Derecho
+2;6;Duván Zapata;30;1.87;80.0;1900000.0;/imagenes/colombia/duvanzapata.jpg;Delantero
+3;Brasil;Tite;/imagenes/brasil/brasil.jpg
+3;7;Neymar Jr.;29;1.75;68.0;1200000.0;/imagenes/brasil/neymar.jpg;Extremo Izquierdo
+3;8;Philippe Coutinho;29;1.72;68.0;1100000.0;/imagenes/brasil/philippecoutinho.jpg;Centrocampista
+3;9;Roberto Firmino;29;1.81;76.0;1300000.0;/imagenes/brasil/robertofirmino.jpg;Delantero
+3;10;Casemiro;29;1.85;84.0;1500000.0;/imagenes/brasil/casemiro.jpg;Centrocampista

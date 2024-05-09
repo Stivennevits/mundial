@@ -16,6 +16,61 @@
         </ul>
     </div>
 </nav>
+ <style>
+        body {
+            background-image: url(fifa3.jpg);
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar li {
+            margin-right: 20px;
+        }
+        .navbar li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .navbar li a:hover {
+            color: #ffc107;
+        }
+        .navbar li a::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ffc107;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .navbar li a:hover::before {
+            width: 100%;
+            visibility: visible;
+        }
+    </style>
 
 <style>
     body {
@@ -84,17 +139,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="nuevoJugaModal2Label">Agregar Selecci贸n</h1>
+              <h1 class="modal-title fs-5" id="nuevoJugaModal2Label">Agregar Seleccion</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="agregarEquipoForm" action="agregarEquipo.do" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
                     <div class="mb-3">
-                        <label for="pais" class="form-label">Pa铆s:</label>
+                        <label for="pais" class="form-label">Pai璼:</label>
                         <input type="text" name="nombreEquipo" id="nombreEquipo" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="director" class="form-label">Director T茅cnico:</label>
+                        <label for="director" class="form-label">Director Tecnico:</label>
                         <input type="text" name="director" id="director" class="form-control" required>
                     </div>
                     <div class="mb-3">
@@ -135,7 +190,7 @@ if (!equipos.isEmpty()) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="verModalLabel">Informaci贸n del Equipo</h5>
+                <h5 class="modal-title" id="verModalLabel">Informacion del Equipo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -216,7 +271,7 @@ if (!equipos.isEmpty()) {
 
 
     function editarEquipo(idEquipo) {
-        // Realizar una solicitud AJAX para cargar el contenido de editar.jsp
+        // Realizar una solicitud AJAX 
         $.get("editarEquipo.jsp?idEquipo=" + idEquipo, function (data) {
             // Insertar el contenido en la ventana modal
             $("#equipoDetails").html(data);
@@ -240,7 +295,7 @@ if (!equipos.isEmpty()) {
     
     // Funci贸n para confirmar la eliminaci贸n de un equipo
     function confirmarEliminar() {
-        if (confirm("驴Est谩s seguro de que deseas eliminar este equipo?")) {
+        if (confirm("縀stas seguro de que deseas eliminar este equipo?")) {
             // Eliminar el equipo (c贸digo para enviar la solicitud al servidor)
             
             // Mostrar mensaje de 茅xito

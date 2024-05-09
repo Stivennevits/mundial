@@ -28,7 +28,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Reporte de Nómina</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Reporte de Nomina</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -46,13 +46,13 @@
                 <div>
                     <p><strong>Equipo: </strong><%= equipoEspecifico.getNombre() %></p>
                     <p><strong>Fecha: </strong><%= java.time.LocalDate.now() %></p>
-                    <p><strong>Total Nómina: </strong><%= totalNomina %> millones anuales</p>
+                    <p><strong>Total Nomina: </strong><%= totalNomina %> millones anuales</p>
                 </div>
                 <% } else { %>
-                <p>No se encontró el equipo seleccionado.</p>
+                <p>No se encontro el equipo seleccionado.</p>
                 <% } %>
                 <% } else { %>
-                    <p>No se proporcionó un ID de equipo válido.</p>
+                    <p>No se proporciono un ID de equipo válido.</p>
                 <% } %>
             </div>
             <div class="modal-footer">
@@ -75,5 +75,10 @@
         // Obtiene el ID del equipo del modal y lo imprime en la consola
         var idEquipo = '<%= request.getParameter("idEquipo") %>';
         console.log("ID del Equipo:", idEquipo);
+        
+          $('#reporteNominaModal').on('hidden.bs.modal', function () {
+            // Redirige a inicio.jsp
+            window.location.href = 'inicio.jsp';
+        });
     });
 </script>
