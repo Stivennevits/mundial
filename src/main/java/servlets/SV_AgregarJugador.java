@@ -61,7 +61,7 @@ public class SV_AgregarJugador extends HttpServlet {
         try {
             // Llamar a agregarEquipo
             gestionar.agregarJugador(idEquipo,nombre,edad,altura,peso,posicion,salario,logoPath);
-            response.sendRedirect("inicio.jsp");
+            response.sendRedirect("index.jsp");
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().println("Ocurrió un error inesperado: " + e.getMessage());

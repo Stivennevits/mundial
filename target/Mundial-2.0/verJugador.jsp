@@ -32,6 +32,7 @@
                                     <th>Peso</th>
                                     <th>Salario</th>
                                     <th>Posición</th>
+                                    <th>Foto</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -53,6 +54,10 @@
                                     <td><%= jugador.getPeso() %></td>
                                     <td><%= jugador.getSalario() %></td>
                                     <td><%= jugador.getPosicion() %></td>
+                                    <td>
+                                         <a class="btn btn-primary btn-sm me-1" style="color: white;" data-bs-toggle="modal" data-bs-target="#verJugador" title="Ver Jugador" onclick="mostrarImagenJugador(<%= jugador.getId() %>, '<%= jugador.getRutaImagen()%>')"><i class="fas fa-eye"></i></a>
+                                        
+                                    </td>
                                     <td>
                                         <a  style="color: white;" data-bs-toggle="modal" data-bs-target="#verJugador" title="Ver Jugador" onclick="mostrarImagenJugador(<%= jugador.getId() %>, '<%= jugador.getRutaImagen()%>')"><i class="fas fa-eye"></i></a>
                                         <a  data-bs-toggle="modal" data-bs-target="#editJugador<%= jugador.getId()%>" title="Editar"><i class='fas fa-user-edit'></i></a>
@@ -201,7 +206,7 @@ if (!jugadores.isEmpty()) {
                         </div>
                          <div class="mb-3">
                             <label for="posicion" class="form-label">Posición:</label>
-                            <input type="text" name="posicion" id="posicion" class="form-control" required>
+                            <input type="text" name="posicion" id="posicion" class="form-control" value="<%= jugador.getPosicion() %>">
                         </div>
                   
                         <div class="mb-3">

@@ -125,7 +125,7 @@ public class Funcionalidad {
                 Seleccion equipoActual = null; // Inicializamos el equipo actual como nulo
                 while ((linea = lector.readLine()) != null) { // Mientras haya líneas por leer en el archivo
                     String[] campos = linea.split(";"); // Dividimos la línea en campos separados por ";"
-                    System.out.println("NO ENTIENDO"+campos.length+"/"+(campos.length == 4));
+                   
                     if (campos.length == 4) { // Si hay 4 campos, es un equipo
                         // Si hay un equipo anterior, agregamos los jugadores a ese equipo
                         if (equipoActual != null && jugadores != null) {
@@ -153,10 +153,10 @@ public class Funcionalidad {
                         jugador.setSalario(Double.parseDouble(campos[5])); // Asignamos el salario del jugador
                         jugador.setRutaImagen(campos[6]); // Asignamos la ruta de la imagen del jugador
                         jugador.setPosicion(campos[7]); // Asignamos la posición del jugador
-                        System.out.println("JUGADOR"+jugador);
+                       
                         jugadores.add(jugador); // Agregamos el jugador a la lista de jugadores del equipo actual
                     }
-                    System.out.println("unimariana.mundial.procesos.Funcionalidad.cargarDataRam()"+"ERROR DE MIERDA"+campos.length+"/"+(campos.length == 8));
+                    
                 }
     
                 // Agregamos el último equipo
@@ -170,7 +170,7 @@ public class Funcionalidad {
                 }
             } catch (IOException e) {
                 // Manejo de excepciones
-                System.out.println("NO CREO CAREMONDA");
+      
             }
         }
     }

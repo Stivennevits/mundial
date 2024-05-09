@@ -102,7 +102,7 @@
                 <form id="agregarEquipoForm" action="agregarEquipo.do" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario()">
                     <div class="mb-3">
                         <label for="pais" class="form-label">Pai­s:</label>
-                        <input type="text" name="nombreEquipo" id="nombreEquipo" class="form-control" required>
+                        <input type="text" name="nombreSeleccion" id="nombreSeleccion" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="director" class="form-label">Director Tecnico:</label>

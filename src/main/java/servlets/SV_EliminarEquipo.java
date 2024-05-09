@@ -20,7 +20,7 @@ public class SV_EliminarEquipo extends HttpServlet {
         Funcionalidad.eliminarSeleccion(id);
 
         // Redirigir al usuario a index.jsp con un parámetro en la URL indicando que el equipo se eliminó con éxito
-        response.sendRedirect("inicio.jsp");
+        response.sendRedirect("index.jsp");
     }
     
     @Override
