@@ -16,61 +16,7 @@
         </ul>
     </div>
 </nav>
- <style>
-        body {
-            background-image: url(fifa3.jpg);
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
-        .navbar-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px;
-        }
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-        .navbar ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .navbar li {
-            margin-right: 20px;
-        }
-        .navbar li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-            position: relative;
-        }
-        .navbar li a:hover {
-            color: #ffc107;
-        }
-        .navbar li a::before {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #ffc107;
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;
-        }
-        .navbar li a:hover::before {
-            width: 100%;
-            visibility: visible;
-        }
-    </style>
+ 
 
 <style>
     body {
