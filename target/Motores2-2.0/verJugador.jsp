@@ -160,7 +160,14 @@
         width: 400px;   
         height: 500px; 
         object-fit: cover; 
-        box-shadow: 13px 22px 28px rgba(0, 0, 0, 1.5);
+        
+    }
+    .modal-content {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white; 
+    }
+    .modal-dialog {
+    max-width: 450px;  /* Ancho máximo un poco mayor que el de la imagen */
     }
 </style>
                             
