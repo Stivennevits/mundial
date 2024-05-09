@@ -1,0 +1,95 @@
+*_Equipo: Brasil
+Id: 1
+Director Tecnico: Tite
+Bandera: /imagenes/brasil/brazil.png
+Jugadores:
+
+    Id: 1
+    Nombre: Neymar Jr.
+    Edad: 29
+    Altura: 1.75
+    Peso: 68.0
+    Salario: 1200000.0
+    Ruta Imagen: /imagenes/brasil/neymar.jpg
+    Posicion: Extremo Derecho
+	
+    Id: 2
+    Nombre: Richarlison
+    Edad: 24
+    Altura: 1.75
+    Peso: 71.0
+    Salario: 900000.0
+    Ruta Imagen: /imagenes/brasil/richarlison.png
+    Posicion: Extremo Derecho
+
+*_Equipo: Argentina
+Id: 2
+Director Tecnico: Lionel Scaloni
+Bandera: /imagenes/argentina/argentina.jpg
+Jugadores:
+
+    Id: 3
+    Nombre: Lionel Messi
+    Edad: 12
+    Altura: 1.71
+    Peso: 72.0
+    Salario: 1500000.0
+    Ruta Imagen: /imagenes/argentina/lionelmessi.jpg
+    Posicion: Delantero
+
+*_Equipo: Colombia
+Id: 3
+Director Tecnico: Reinaldo Rueda
+Bandera: /imagenes/colombia/colombia.jpg
+Jugadores:
+
+    Id: 4
+    Nombre: James RodrÃ­guez
+    Edad: 30
+    Altura: 1.8
+    Peso: 75.0
+    Salario: 1300000.0
+    Ruta Imagen: /imagenes/colombia/jamesrodriguez.jpg
+    Posicion: Mediocentro Ofensivo
+
+    Id: 5
+    Nombre: Radamel Falcao
+    Edad: 35
+    Altura: 1.77
+    Peso: 74.0
+    Salario: 1100000.0
+    Ruta Imagen: /imagenes/colombia/radamelfalcao.jpg
+    Posicion: Delantero Centro
+
+*_Equipo: Alemania
+Id: 4
+Director Tecnico: Joachim LÃ¶w
+Bandera: /imagenes/alemania/alemania.jpg
+Jugadores:
+
+    Id: 6
+    Nombre: Manuel Neuer
+    Edad: 35
+    Altura: 1.93
+    Peso: 92.0
+    Salario: 1400000.0
+    Ruta Imagen: /imagenes/alemania/manuelneuer.jpg
+    Posicion: Portero
+
+    Id: 7
+    Nombre: Toni Kroos
+    Edad: 31
+    Altura: 1.83
+    Peso: 78.0
+    Salario: 1200000.0
+    Ruta Imagen: /imagenes/alemania/tonikroos.jpg
+    Posicion: Mediocentro
+
+    Id: 8
+    Nombre: Thomas MÃ¼ller
+    Edad: 32
+    Altura: 1.86
+    Peso: 75.0
+    Salario: 1100000.0
+    Ruta Imagen: /imagenes/alemania/thomasmuller.jpg
+    Posicion: Delantero
