@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import umariana.mundial.GestionarMundial;
+import unimariana.mundial.procesos.Funcionalidad;
 
 @WebServlet("/eliminarEquipo.do")
 public class SV_EliminarEquipo extends HttpServlet {
@@ -17,10 +17,10 @@ public class SV_EliminarEquipo extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         // Eliminar el equipo utilizando el método de la clase GestionarEquipo
-        GestionarMundial.eliminarEquipo(id);
+        Funcionalidad.eliminarSeleccion(id);
 
         // Redirigir al usuario a index.jsp con un parámetro en la URL indicando que el equipo se eliminó con éxito
-        response.sendRedirect("inicio.jsp?success=delete");
+        response.sendRedirect("inicio.jsp");
     }
     
     @Override

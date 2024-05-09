@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import umariana.mundial.GestionarMundial;
+import unimariana.mundial.procesos.Funcionalidad;
 
 @WebServlet("/agregarJugador.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -17,12 +17,12 @@ import umariana.mundial.GestionarMundial;
                  maxRequestSize = 1024 * 1024 * 50)   // 50MB
 public class SV_AgregarJugador extends HttpServlet {
 
-    private GestionarMundial gestionar;
+    private Funcionalidad gestionar;
     
     @Override
     public void init() throws ServletException {
         super.init();
-        gestionar = new GestionarMundial();
+        gestionar = new Funcionalidad();
     }
     
     @Override

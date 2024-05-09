@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import umariana.mundial.GestionarMundial;
-import umariana.mundial.NombreDuplicadoException;
+import unimariana.mundial.procesos.Funcionalidad;
+import unimariana.mundial.excepciones.NombreExisteExcepcion;
 
 @WebServlet("/agregarEquipo.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -18,12 +18,12 @@ import umariana.mundial.NombreDuplicadoException;
                  maxRequestSize = 1024 * 1024 * 50)   // 50MB
 public class SV_AgregarEquipo extends HttpServlet {
 
-    private GestionarMundial gestionar;
+    private Funcionalidad gestionar;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        gestionar = new GestionarMundial();
+        gestionar = new Funcionalidad();
     }
     
     @Override
@@ -34,7 +34,7 @@ public class SV_AgregarEquipo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtener parámetros de la solicitud
-        String nombreEquipo = request.getParameter("nombreEquipo");
+        String nombreSeleccion = request.getParameter("nombreSeleccion");
         String director = request.getParameter("director");
         
         // Obtener el archivo de logo
@@ -55,9 +55,9 @@ public class SV_AgregarEquipo extends HttpServlet {
         String logoPath = logoFilename;
 
         try {
-            // Llamar a agregarEquipo
-            gestionar.agregarEquipo(nombreEquipo, director, logoPath);
-            response.sendRedirect("inicio.jsp");
+            // Llamar a agregarSeel
+            gestionar.agregarSeleccion(nombreSeleccion, director, logoPath);
+            response.sendRedirect("index.jsp");
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().println("Ocurrió un error inesperado: " + e.getMessage());

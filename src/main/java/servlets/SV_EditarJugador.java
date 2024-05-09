@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import umariana.mundial.GestionarMundial;
+import unimariana.mundial.procesos.Funcionalidad;
 
 @WebServlet("/editarJugador.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -22,7 +22,7 @@ import umariana.mundial.GestionarMundial;
 public class SV_EditarJugador extends HttpServlet {
 
     
-    private GestionarMundial gestionar = new GestionarMundial();
+    private Funcionalidad gestionar = new Funcionalidad();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
@@ -67,7 +67,7 @@ public class SV_EditarJugador extends HttpServlet {
           try {
             // Llamar a agregarEquipo
             gestionar.editarJugador(idEquipo,idJugador,nombre,edad,altura,peso,posicion,salario,nuevoLogoCargado);
-            response.sendRedirect("inicio.jsp");
+            response.sendRedirect("index.jsp");
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             response.getWriter().println("Ocurrió un error inesperado: " + e.getMessage());
