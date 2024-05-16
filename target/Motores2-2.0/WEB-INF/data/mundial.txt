@@ -1,6 +1,0 @@
-1;Argentina;Lionel Scaloni;imagenes\argentina.jpg
-1;1;Maradona;100;1.5;800.0;54150.0;mara.jpg;MDO - Mediocentro Ofensivo
-1;2;Esteban Cambiaso;50;1.89;85.0;125634.0;cambiaso.jpg;MC - Mediocentro
-2;Colombia;Reinaldo Rueda;/imagenes/colombia/colombia.jpg
-2;3;Hugo Rodallegua;35;1.89;89.0;545051.0;rodallegua.jpg;D - Delantero
-2;4;Radamel falcao;50;1.89;85.0;125634.0;rada.jpg;PO - Portero

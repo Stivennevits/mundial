@@ -117,7 +117,7 @@
                                         <td><%= equipo.getNombre()%></td>
                                         <td><%= equipo.getDirectorTecnico()%></td>
                                         <td class="action">
-                                            <a class="btn btn-primary btn-sm me-1" style="color: white;" onclick="mostrarImagenEquipo(<%= equipo.getId() %>, '<%= equipo.getBandera() %>')" title="Ver equipo"><i class="fas fa-eye"></i></a>
+                                            <a class="btn btn-primary btn-sm me-1" style="color: white;" onclick="mostrarImagenEquipo(<%= equipo.getId() %>, '<%= equipo.getBandera() %>', '<%= equipo.getDirectorTecnico()%>', '<%= equipo.getNombre()%>' )" title="Ver equipo"><i class="fas fa-eye"></i></a>
                                             <a class="btn btn-dark btn-sm me-1" onclick="verJugador(<%= equipo.getId()%>)" title="Ver Jugadores"><i class="fas fa-list"></i></a>
                                             <a class="btn btn-success btn-sm me-1" onclick="abrirReporteNomina(<%= equipo.getId()%>)" title="Calcular NÃ³mina" href="reporte.jsp?idEquipo=<%= equipo.getId()%>"><i class="fas fa-dollar-sign"></i></a>
                                             <a class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editarModal<%= equipo.getId()%>" title="Editar"><i class="fas fa-edit text-white"></i></a>
@@ -168,9 +168,19 @@
 <div class="modal fade" id="modalVer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle del Equipo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img id="imagenEquipo" src="" alt="Imagen del equipo" class="img-fluid rounded">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <img id="imagenEquipo" src="" alt="Imagen del equipo" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <p id="nombre" class="lead"></p>
+                        <p id="directorTecnico" class="lead"></p>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -343,17 +353,24 @@ if (!equipos.isEmpty()) {
     }
     
     // Llamada a la funciÃ³n showToast con un mensaje especÃ­fico
-function mostrarImagenEquipo(idEquipo, rutaImagen) {
-    // Agregar "/" después de "imagenes" en la ruta de la imagen
-    var nuevaRutaImagen = rutaImagen.replace("imagenes", "imagenes/");
-    
-    // Actualizar la ruta de la imagen
-    var imagen = document.getElementById("imagenEquipo");
-    imagen.src = nuevaRutaImagen;
-    
-    // Mostrar la ventana modal
-    $("#modalVer").modal("show");
-}
+function mostrarImagenEquipo(idEquipo, rutaImagen, directorTecnico, nombre) {
+        // Agregar "/" después de "imagenes" en la ruta de la imagen
+        var nuevaRutaImagen = rutaImagen.replace("imagenes", "imagenes/");
+        
+        // Actualizar la ruta de la imagen
+        var imagen = document.getElementById("imagenEquipo");
+        imagen.src = nuevaRutaImagen;
+
+        // Actualizar el nombre del director técnico
+        var director = document.getElementById("directorTecnico");
+        director.textContent = "Director Técnico: " + directorTecnico;
+        
+        var nombreEquipo = document.getElementById("nombre");
+        nombreEquipo.textContent = "Nombre Equipo: " + nombre;
+        
+        // Mostrar la ventana modal
+        $("#modalVer").modal("show");
+    }
 
 </script>
 

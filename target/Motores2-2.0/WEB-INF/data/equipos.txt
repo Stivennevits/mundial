@@ -1,0 +1,3 @@
+1;Argentina;Lionel Scaloni;imagenes\imagen_2024-05-16_013446759.png
+2;Colombia;Reinaldo Rueda;imagenes\imagen_2024-05-16_013712422.png
+3;Brasil;Tite;imagenes\imagen_2024-05-16_014000842.png

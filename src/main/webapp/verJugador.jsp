@@ -131,7 +131,7 @@
                                     <td><%= jugador.getSalario() %></td>
                                     <td><%= jugador.getPosicion() %></td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm me-1" style="color: white;" data-bs-toggle="modal" data-bs-target="#verJugador" title="Ver Jugador" onclick="mostrarImagenJugador(<%= jugador.getId() %>, '<%= jugador.getRutaImagen()%>')"><i class="fas fa-eye"></i></a>
+                                        <a class="btn btn-primary btn-sm me-1" style="color: white;" data-bs-toggle="modal" data-bs-target="#verJugador" title="Ver Jugador" onclick="mostrarImagenJugador(<%= jugador.getId() %>, '<%= jugador.getRutaImagen()%>','<%= jugador.getNombre()%>', '<%= jugador.getEdad()%>', '<%= jugador.getAltura()%>', '<%= jugador.getPeso()%>', '<%= jugador.getPosicion()%>', '<%= jugador.getSalario()%>')"><i class="fas fa-eye"></i></a>
                                         <a class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editJugador<%= jugador.getId()%>" title="Editar"><i class="fas fa-edit text-white"></i></a>
                                         <a href="eliminarJugador.do?idEquipo=<%= equipo.getId()%>&idJugador=<%= jugador.getId()%>" onclick="return confirmarEliminar();" class="btn btn-danger btn-sm me-1" title="Eliminar"><i class="fas fa-trash"></i></a>
                                     </td>
@@ -176,17 +176,33 @@
 <div class="modal fade" id="verJugador" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle del Jugador</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="modal-body">
-                <div class="d-flex justify-content-center align-items-center">
-                    <img id="imagenEquipo" src="" alt="Imagen del equipo" class="img-fluid rounded">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <img id="imagenJugador" src="" alt="Imagen del Jugador" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Datos del Jugador</h5>
+                        <p><strong>Nombre:</strong> <span id="nombreJugador"></span></p>
+                        <p><strong>Edad:</strong> <span id="edadJugador"></span></p>
+                        <p><strong>Altura:</strong> <span id="alturaJugador"></span></p>
+                        <p><strong>Peso:</strong> <span id="pesoJugador"></span></p>
+                        <p><strong>Posición:</strong> <span id="posicionJugador"></span></p>
+                        <p><strong>Salario:</strong> <span id="salarioJugador"></span></p>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer d-flex justify-content-center">
+            <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
+
                             
 
                     
@@ -324,17 +340,31 @@ if (!jugadores.isEmpty()) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
                             // Llamada a la funciÃ³n showToast con un mensaje especÃ­fico
-function mostrarImagenJugador(idEquipo, rutaImagen) {
+function mostrarImagenJugador(idEquipo, rutaImagen, nombre, edad, altura, peso, posicion, salario) {
     // Agregar "/" después de "imagenes" en la ruta de la imagen
     var nuevaRutaImagen = rutaImagen.replace("imagenes", "imagenes/");
     
-    // Actualizar la ruta de la imagen
-    var imagen = document.getElementById("imagenEquipo");
+    // Actualizar la ruta de la imagen y los datos del jugador
+    var imagen = document.getElementById("imagenJugador");
+    var nombreJugador = document.getElementById("nombreJugador");
+    var edadJugador = document.getElementById("edadJugador");
+    var alturaJugador = document.getElementById("alturaJugador");
+    var pesoJugador = document.getElementById("pesoJugador");
+    var posicionJugador = document.getElementById("posicionJugador");
+    var salarioJugador = document.getElementById("salarioJugador");
+
     imagen.src = nuevaRutaImagen;
-    
+    nombreJugador.textContent = nombre;
+    edadJugador.textContent = edad + " años";
+    alturaJugador.textContent = altura + " cm";
+    pesoJugador.textContent = peso + " kg";
+    posicionJugador.textContent = posicion;
+    salarioJugador.textContent = "$" + salario;
+
     // Mostrar la ventana modal
     $("#verJugador").modal("show");
 }
+
 
 
 
